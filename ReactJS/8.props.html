@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+    <!-- React element
+        -Sử dụng props giống như với attribute của thẻ HTML
+        - 2 props class, for => className, htmlFor
+        - Phải tuân theo quy ước có sẵn
+    React components
+        - Sử dụng pprops giống như đối số cho components
+        - Tự do đặt tên props
+           - Đặt theo camelCse
+           -Có thể bao gồm dấu gạch ngang
+    Chú ý: 
+        - Props "key" là prop đặc biệt
+        -Props cơ bản là đối số của components
+          => Props có thể là bất cứ kiểu dữ liệu gì
+        - Sử dụng detstructuring -->
+
+
+
+
+
+    <div id="root"></div>
+    <script type="text/babel">
+        // PostItem.js
+         //function PostItem(props){
+        //     if(typeof props.callback === 'function')
+        //     props.callback(Math.random())
+        function PostItem({
+            image,
+            title,
+            description,
+            publishedAt,
+            callback = () => {},
+        }){
+
+            callback()
+
+            return(
+                <div className="post-item">
+                    <img src={image} 
+                         alt={title}/>
+                    <h2 className="post-title">{title}</h2>
+                    <p className="post-desc"> {description}</p>
+                    <p className="-post-published">{publishedAt}</p>
+
+                    </div>
+            )
+        }
+
+        // App.js
+        function App(){
+            return(
+                <div id="wrapper">
+                    <PostItem
+                    title="1. C#(.NET) - Tương tác với file Excel"
+                    image="https://files.fullstack.edu.vn/f8-prod/blog_posts/311/6147eea9cef9c.png"
+                    description="1. Bạn có kiến thức ngon ngữ C#!Bạn có muốn thực hiện tương tác với file Excel"
+                    publishedAt="1. Một ngày trước . 5 phút đọc"
+                    callback={() =>{}}
+                    // callback={(random) => {
+                    //     console.log('random: ', random);
+                    //}}
+                    />
+                    <PostItem
+                    title="2. C#(.NET) - Tương tác với file Excel"
+                    image="https://files.fullstack.edu.vn/f8-prod/blog_posts/311/6147eea9cef9c.png"
+                    description="2. Bạn có kiến thức ngon ngữ C#!Bạn có muốn thực hiện tương tác với file Excel"
+                    publishedAt="2. Một ngày trước . 5 phút đọc"
+                  />
+                    <PostItem
+                    title="3. C#(.NET) - Tương tác với file Excel"
+                    image="https://files.fullstack.edu.vn/f8-prod/blog_posts/311/6147eea9cef9c.png"
+                    description="3. Bạn có kiến thức ngon ngữ C#!Bạn có muốn thực hiện tương tác với file Excel"
+                    publishedAt="3. Một ngày trước . 5 phút đọc"
+                  
+                    />
+                    </div>
+            )
+        }
+        //index.js
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />)
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- Render list khoá học
+     Câu hỏi thường gặp
+     -Tại sao khi code thuần dùng mao phải join()
+     - Gặp lỗi khi render từ mảng( prop "key")
+       -->
+     <div id="root"></div>
+    <script type="text/babel">
+        // const courses = [
+        //   {
+        //     name: 'HTML, CSS',
+        //   },
+        //   {
+        //     name: 'Responsive web design',
+        //   },
+        //   {
+        //     name: 'ReactJS',
+        //   }
+        // ]
+
+        // const jsx = (
+        //   <ul>
+        //      {
+        //       courses.map(courses => 
+        //         <li key={index}>{courses.name}</li>
+        //       )
+        //      }
+        //     </ul>
+        // )
+        // - Không render được 2 element cùng lúc
+        const jsx1 = React.createElement(
+          React.Fragment,
+          null,
+          React.createElement('h1', null, 'Heading 1'),
+          React.createElement('h2', null, 'Heading 2')
+        )
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(jsx1)
+    </script>
+</body>
+</html>

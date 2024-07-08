@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // phần 2: 
+    // -Pros trong jsx
+    //    - <YourComponent
+    //       propName1 = "String literals"
+    //       propName2 = {expression}
+    //       />
+    //     - Props default to "true"
+    //     - Spread/Rest props 
+    //     - Children prop
+    //          - <YourComponent>String literals</YourComponent>
+    //          - <YourComponent>{expression}</YourComponent>
+    //     - Render props -->
+
+
+
+        function Input({label, ...inputProps}){
+                return(
+                    <div>
+                        <label>{label}</label>   
+                        <input {...inputProps} /> 
+                    </div>
+                )
+        }
+
+        // function Button({ title, primary }){
+        //     return(
+        //         <button>{title}</button>
+        //     )
+
+        // }
+
+        function List({data, children}){
+            return(
+                <ul>
+                    {data.map((...props) => children(...props))}
+                </ul>
+            )
+        }
+
+        function App(){
+            return(
+                <div id="warpper">
+                    <Input
+                        label="Ho Va Ten"
+                        type="text"
+                        placeholder = "Moi Nhap Ho Va Ten"
+                        title="Day la input"
+                        onFocus = {() =>{
+                            console.log(Math.random())
+                        }}
+                    />
+                </div>
+            )
+
+            //const title = "Hello The"
+            // return(
+            //     <div id="warpper">
+            //         <Button primary title={title}></Button> 
+            //     </div>
+            // )
+
+            const cars = ["BMW", "HONDA", "TOYOTA"]
+            return(
+                <div id= "warpper">
+                    <List data={cars}>
+                        {(item, index) => <li key={index}>{item}</li>}
+                    </List>
+                </div>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App/>)
+    </script>
+    
+</body>
+</html>

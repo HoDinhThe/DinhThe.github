@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+</head>
+<body>
+<!-- tại sao phải sử dụng React DOM
+Tại sao lại phải tách React-DOM ra
+Render UI -->
+<!--7: Tao:
+<div class="post-item">
+    <h2 title="Hoc React tai f8">Hoc React </h2>
+    <p>Hoc ReactJS từ cơ bản tới nâng cao</p>
+</div> -->
+<div id="root"></div>
+<script>
+    //React
+    const postItem = React.createElement(
+        'div',
+        {
+            className: 'post-item',
+        },
+        React.createElement(
+            'h2',
+            {
+                title: 'Hoc React tai F8'
+            },
+            'Hoc React'
+        ),
+        React.createElement(
+            'p',
+            {},
+            'Hoc ReactJS từ cơ bản tới nâng cao'
+        )
+    )
+    // console.log(postItem);
+
+    // Get root element
+    const container = document.getElementById('root')
+
+    // React@17
+    // React-DOM -> render UI
+    //ReactDOM.render(postItem, root)
+
+    // React@18
+    const root = ReactDOM.createRoot(container)
+    root.render(postItem)
+</script>
+</body>
+</html>
